@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let feedsViewController = FeedsViewController()
-        let navigationController = UINavigationController(rootViewController: feedsViewController)
+        let factsTableViewController = FactsTableViewController()
+        let navigationController = UINavigationController(rootViewController: factsTableViewController)
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()

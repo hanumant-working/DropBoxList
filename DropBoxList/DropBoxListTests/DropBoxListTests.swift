@@ -21,9 +21,12 @@ class DropBoxListTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFileLoadingFromBundle() throws {
+        let bundle = Bundle(for: type(of: self))
+        if let _ = bundle.url(forResource: "Fact", withExtension: "json") {
+            XCTFail("Missing file: Fact.json")
+            return
+        }
     }
     
     func testPerformanceExample() {
