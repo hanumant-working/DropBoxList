@@ -39,7 +39,23 @@ class FactsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var secCount = 0
+        if factsArray.count > 0 {
+            secCount = 1
+        }
+        // Set empty screen message
+        if secCount == 0 {
+            let noDataLabel: UILabel     = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.bounds.size.width-32, height: tableView.bounds.size.height))
+            noDataLabel.text          = "There are no data.."
+            noDataLabel.textColor     = UIColor.gray
+            noDataLabel.textAlignment = .center
+            noDataLabel.numberOfLines = 0
+            tableView.backgroundView  = noDataLabel
+        } else {
+            tableView.backgroundView = nil
+        }
+        
+        return secCount
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,11 +70,10 @@ class FactsTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) else {
                 return UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: cellIdentifier)
             }
+            cell.selectionStyle = .none
             return cell
         }()
- 
-        
-        cell.selectionStyle = .none
+
         let factObj = factsArray[indexPath.row]
         
         // Set title

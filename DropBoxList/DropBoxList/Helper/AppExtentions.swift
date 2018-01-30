@@ -19,11 +19,12 @@ extension UIImageView {
                     // Set default placeholder image, after image fail to load from URL
                     self.image = UIImage(named: "placeholder")
                     print(error ?? "No Error")
-                    return
+                } else {
+                    // Set image
+                    let image = UIImage(data: data!)
+                    self.image = image
                 }
-                // Set image 
-                let image = UIImage(data: data!)
-                self.image = image
+                
             })
         }).resume()
     }

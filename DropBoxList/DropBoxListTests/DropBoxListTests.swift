@@ -21,6 +21,7 @@ class DropBoxListTests: XCTestCase {
         super.tearDown()
     }
     
+    // Check file on local bundle or not
     func testFileLoadingFromBundle() throws {
         let bundle = Bundle(for: type(of: self))
         if let _ = bundle.url(forResource: "Fact", withExtension: "json") {
